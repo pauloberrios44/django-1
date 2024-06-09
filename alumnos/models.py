@@ -22,3 +22,14 @@ class Alumno(models.Model):
 
     def __str__(self):
         return str(self.nombre)+" "+str(self.apellido_paterno)
+    
+class Usuario(models.Model):
+    
+    id_usuario = models.AutoField(db_column="idUsuario", primary_key=True)
+    nombre_usuario = models.CharField(max_length=255)
+    id_genero = models.ForeignKey('Genero', on_delete=models.CASCADE, db_column='idGenero')
+
+    def obtener_id_genero(self):
+        return self.id_genero.id_genero
+
+    
